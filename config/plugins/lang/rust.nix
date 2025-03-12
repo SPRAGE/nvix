@@ -2,6 +2,30 @@
 {
   plugins = {
     rustaceanvim.enable = true;
+    settings = {
+      settings = {
+        server = {
+          default_settings = {
+            rust-analyzer = {
+              installCargo = false;
+              installRustc = false;
+              cargo = {
+                allFeatures = true;
+              };
+              check = {
+                command = "clippy";
+              };
+              inlayHints = {
+                lifetimeElisionHints = {
+                  enable = "always";
+                };
+              };
+            };
+          };
+          standalone = false;
+        };
+      };
+    };
   };
 
   #   conform-nvim.settings = {
