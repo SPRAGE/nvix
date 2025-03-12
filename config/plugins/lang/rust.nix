@@ -1,28 +1,30 @@
 { pkgs, lib, ... }:
 {
   plugins = {
-    rustaceanvim.enable = true;
-    settings = {
+    rustaceanvim = {
+      enable = true;
       settings = {
-        server = {
-          default_settings = {
-            rust-analyzer = {
-              installCargo = false;
-              installRustc = false;
-              cargo = {
-                allFeatures = true;
-              };
-              check = {
-                command = "clippy";
-              };
-              inlayHints = {
-                lifetimeElisionHints = {
-                  enable = "always";
+        settings = {
+          server = {
+            default_settings = {
+              rust-analyzer = {
+                installCargo = false;
+                installRustc = false;
+                cargo = {
+                  allFeatures = true;
+                };
+                check = {
+                  command = "clippy";
+                };
+                inlayHints = {
+                  lifetimeElisionHints = {
+                    enable = "always";
+                  };
                 };
               };
             };
+            standalone = false;
           };
-          standalone = false;
         };
       };
     };
