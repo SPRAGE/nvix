@@ -41,7 +41,7 @@
   keymaps = [
     {
       mode = "n";
-      key = "<leader>E";
+      key = "<leader>e";
       action = "<cmd>Neotree toggle<cr>";
       options = {
         silent = true;

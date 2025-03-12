@@ -4,7 +4,7 @@
   keymaps = [
     {
       mode = "n";
-      key = "<leader>e";
+      key = "<leader>E";
       action = "<cmd>Yazi toggle<cr>";
       options = {
         desc = "Yazi toggle";
