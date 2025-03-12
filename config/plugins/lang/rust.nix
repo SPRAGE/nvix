@@ -25,6 +25,12 @@
             };
             standalone = false;
           };
+          tools = {
+            crate_graph = {
+              full = true;
+            };
+
+          };
         };
       };
     };
