@@ -1,14 +1,24 @@
 {
   colorschemes = {
-    catppuccin = {
+    kanagawa = {
       enable = true;
       settings = {
         background = {
-          light = "macchiato";
-          dark = "mocha";
+          light = "lotus";
+          dark = "wave";
         };
-        flavour = "macchiato"; # “latte”, “mocha”, “frappe”, “macchiato”, “auto”
+        colors = {
+          palette = { };
+          theme = {
+            wave = { };
+            lotus = { };
+            dragon = { };
+            all = { };
+          };
+        };
+        terminal_colors = true;
         transparent_background = true;
+        undercurl = true;
         integrations = {
           cmp = true;
           flash = true;
