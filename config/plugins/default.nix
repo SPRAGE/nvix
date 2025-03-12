@@ -40,6 +40,7 @@
     ./lang/markdown.nix
     ./lang/nix.nix
     ./lang/python.nix
+    ./lang/rust.nix
     ./lang/shell.nix
     ./lang/typescript.nix
     ./lang/yaml.nix
