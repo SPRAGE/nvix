@@ -67,11 +67,11 @@
           action = "undo";
           options.desc = "Search Undo";
         };
-        "<leader><space>" = {
+        "<leader>ff" = {
           action = "find_files";
           options.desc = "Find project files";
         };
-        "<leader>ff" = {
+        "<leader>ffh" = {
           action = "find_files hidden=true";
           options.desc = "Find project files";
         };
