@@ -3,10 +3,7 @@
     gruvbox = {
       enable = true;
       settings = {
-        background = {
-          light = "light";
-          # dark = "dark";
-        };
+        background = "light";
         contrast = "soft"; # can be "hard", "soft" or empty string
         terminal_colors = true;
         transparent_mode = true;
