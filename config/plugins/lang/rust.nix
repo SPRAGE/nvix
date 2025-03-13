@@ -4,34 +4,34 @@
     rustaceanvim = {
       enable = true;
       settings = {
-        settings = {
-          server = {
-            default_settings = {
-              rust-analyzer = {
-                installCargo = false;
-                installRustc = false;
-                cargo = {
-                  allFeatures = true;
-                };
-                check = {
-                  command = "clippy";
-                };
-                inlayHints = {
-                  lifetimeElisionHints = {
-                    enable = "always";
-                  };
+        # settings = {
+        server = {
+          default_settings = {
+            rust-analyzer = {
+              installCargo = false;
+              installRustc = false;
+              cargo = {
+                allFeatures = true;
+              };
+              check = {
+                command = "clippy";
+              };
+              inlayHints = {
+                lifetimeElisionHints = {
+                  enable = "always";
                 };
               };
             };
-            standalone = false;
           };
-          tools = {
-            crate_graph = {
-              full = true;
-            };
-
-          };
+          standalone = false;
         };
+        tools = {
+          crate_graph = {
+            full = true;
+          };
+
+        };
+        # };
       };
     };
   };
