@@ -5,10 +5,9 @@
       settings = {
         background = "light";
         contrast = "soft"; # can be "hard", "soft" or empty string
-        terminal_colors = true;
+        # terminal_colors = true;
         transparent_mode = true;
         undercurl = true;
-        bold = false;
         integrations = {
           cmp = true;
           flash = true;
