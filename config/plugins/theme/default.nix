@@ -7,7 +7,7 @@
           light = "light";
           dark = "dark";
         };
-        contrast = "hard"; # can be "hard", "soft" or empty string
+        contrast = "soft"; # can be "hard", "soft" or empty string
         terminal_colors = true;
         transparent_mode = true;
         undercurl = true;
