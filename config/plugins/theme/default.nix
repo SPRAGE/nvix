@@ -11,7 +11,7 @@
         terminal_colors = true;
         transparent_mode = true;
         undercurl = true;
-        bold = true;
+        bold = false;
         integrations = {
           cmp = true;
           flash = true;
