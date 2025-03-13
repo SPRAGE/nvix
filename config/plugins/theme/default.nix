@@ -5,7 +5,7 @@
       settings = {
         background = {
           light = "light";
-          dark = "dark";
+          # dark = "dark";
         };
         contrast = "soft"; # can be "hard", "soft" or empty string
         terminal_colors = true;
