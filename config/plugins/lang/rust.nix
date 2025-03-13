@@ -8,8 +8,8 @@
         server = {
           default_settings = {
             rust-analyzer = {
-              installCargo = false;
-              installRustc = false;
+              installCargo = true;
+              installRustc = true;
               cargo = {
                 allFeatures = true;
               };
