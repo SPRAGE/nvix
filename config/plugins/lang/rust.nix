@@ -4,75 +4,49 @@
     rustaceanvim = {
       enable = true;
       settings = {
-        # settings = {
         server = {
+          on_attach = ''
+            function(_, bufnr)
+              vim.keymap.set("n", "<leader>cR", function()
+                vim.cmd.RustLsp("codeAction")
+              end, { desc = "Code Action", buffer = bufnr })
+              vim.keymap.set("n", "<leader>dr", function()
+                vim.cmd.RustLsp("debuggables")
+              end, { desc = "Rust Debuggables", buffer = bufnr })
+            end
+          '';
           default_settings = {
             rust-analyzer = {
-              installCargo = true;
-              installRustc = true;
               cargo = {
                 allFeatures = true;
+                loadOutDirsFromCheck = true;
+                buildScripts = {
+                  enable = true;
+                };
               };
-              check = {
-                command = "clippy";
-              };
-              inlayHints = {
-                lifetimeElisionHints = {
-                  enable = "always";
+              # Enable clippy lints for Rust
+              checkOnSave = true;
+              procMacro = {
+                enable = true;
+                ignored = {
+                  async-trait = [ "async_trait" ];
+                  napi-derive = [ "napi" ];
+                  async-recursion = [ "async_recursion" ];
                 };
               };
             };
           };
-          standalone = false;
         };
-        tools = {
-          crate_graph = {
-            full = true;
-          };
-
-        };
-        # };
       };
+      config = ''
+        vim.g.rustaceanvim = vim.tbl_deep_extend("keep", vim.g.rustaceanvim or {}, opts or {})
+        if vim.fn.executable("rust-analyzer") == 0 then
+          vim.notify(
+            "**rust-analyzer** not found in PATH, please install it.\nhttps://rust-analyzer.github.io/",
+            vim.log.levels.ERROR
+          )
+        end
+      '';
     };
   };
-
-  #   conform-nvim.settings = {
-  #     formatters_by_ft.python = [
-  #       "ruff_format"
-  #       "ruff_organize_imports"
-  #     ];
-  #   };
-  #
-  #   lint = {
-  #     lintersByFt.python = [ "mypy" ];
-  #     linters.mypy = {
-  #       cmd = lib.getExe pkgs.mypy;
-  #       args = [ "--ignore-missing-imports" ];
-  #     };
-  #   };
-  #
-  #   lsp.servers = {
-  #     pyright = {
-  #       enable = true;
-  #       extraOptions.settings = {
-  #         # Using Ruff's import organizer
-  #         pyright.disableOrganizeImports = true;
-  #         python.analysis = {
-  #           # Ignore all files for analysis to exclusively use Ruff for linting
-  #           ignore.__raw = ''{ '*' }'';
-  #         };
-  #       };
-  #     };
-  #
-  #     ruff = {
-  #       enable = true;
-  #       onAttach.function = ''
-  #         if client.name == 'ruff' then
-  #           -- Disable hover in favor of Pyright
-  #           client.server_capabilities.hoverProvider = false
-  #         end
-  #       '';
-  #     };
-  #   };
-  # };
 }
