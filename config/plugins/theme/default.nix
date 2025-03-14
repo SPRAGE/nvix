@@ -3,10 +3,8 @@
     gruvbox = {
       enable = true;
       settings = {
-        background = {
-          light = "light";
-        };
-        contrast = "soft"; # can be "hard", "soft" or empty string
+        background = "dark";
+        contrast = "medium"; # can be "hard","medium" or "soft"
         terminal_colors = true;
         # transparent_mode = true;
         undercurl = true;
