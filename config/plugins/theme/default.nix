@@ -1,23 +1,11 @@
 {
   colorschemes = {
-    onedark = {
+    gruvbox = {
       enable = true;
       settings = {
-        style = "dark";
-        toggle_style_list = [
-          "dark"
-          "darker"
-          "cool"
-          "deep"
-          "warm"
-          "warmer"
-          "light"
-        ];
-        toggle_style_key = "<leader>ts"; # keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-        # background = "dark";
+        background = "dark";
         contrast = "hard"; # can be "hard","medium" or "soft"
         term_colors = true;
-        ending_tildes = true;
         transparent_mode = false;
         undercurl = true;
         integrations = {
