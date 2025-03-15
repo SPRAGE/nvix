@@ -225,7 +225,7 @@
         "n"
         "v"
       ];
-      key = "<leader>y";
+      key = "y";
       action = "\"+y";
       options.desc = "Copy to system clipboard";
     }
