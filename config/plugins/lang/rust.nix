@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   plugins = {
     rustaceanvim = {
       enable = true;
@@ -22,13 +21,16 @@
 
               diagnostics = {
                 enable = true;
+                experimental.enable = true; # ✅ Fixes missing imports & better suggestions
                 styleLints.enable = true;
               };
 
-              checkOnSave = true;
+              checkOnSave = true; # ✅ Must be a boolean (not an attribute set)
+
               check = {
                 command = "clippy";
                 features = "all";
+                extraArgs = [ "--all-targets" ]; # ✅ Moved from overrideCommand
               };
 
               files = {
@@ -57,6 +59,17 @@
               };
 
               rustc.source = "discover";
+
+              imports = {
+                granularity = {
+                  group = "module";
+                }; # ✅ Helps with auto-imports
+                prefix = "self";
+              };
+
+              lsp = {
+                debounceTextChanges = 150; # ✅ Prevents "content modified" errors
+              };
             };
           };
         };
@@ -65,8 +78,6 @@
   };
 }
 
-#
-#
 # { pkgs, ... }:
 # {
 #
