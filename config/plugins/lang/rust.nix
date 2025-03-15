@@ -20,12 +20,11 @@
               cargo = {
                 allFeatures = true;
                 loadOutDirsFromCheck = true;
-                buildScripts = {
-                  enable = true;
-                };
+                buildScripts.enable = true;
               };
-              # Enable clippy lints for Rust
-              checkOnSave = true;
+              check = {
+                command = "check"; # Ensures cargo check runs on save
+              };
               procMacro = {
                 enable = true;
                 ignored = {
