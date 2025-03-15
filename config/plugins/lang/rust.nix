@@ -1,63 +1,62 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
+  # Needed for RustPlay
+  extraPlugins = with pkgs.vimPlugins; [ webapi-vim ];
+
   plugins = {
     rustaceanvim = {
       enable = true;
       settings = {
+
+        dap = {
+          autoloadConfigurations = true;
+        };
+
         server = {
-          on_attach = ''
-            function(_, bufnr)
-              vim.api.nvim_create_autocmd("BufWritePre", {
-                buffer = bufnr,
-                callback = function()
-                  vim.lsp.buf.code_action({
-                    context = { only = { "source.organizeImports" } },
-                    apply = true
-                  })
-                end
-              })
-              vim.api.nvim_create_autocmd("CursorHold", {
-                buffer = bufnr,
-                callback = function()
-                  vim.diagnostic.open_float(nil, { focusable = false })
-                end
-              })
-            end
-          '';
           default_settings = {
             rust-analyzer = {
               cargo = {
-                allFeatures = true;
-                loadOutDirsFromCheck = true;
                 buildScripts.enable = true;
+                features = "all";
               };
-              checkOnSave = {
-                overrideCommand = [
-                  "cargo"
-                  "check"
-                  "--all-targets"
-                  "--message-format=json"
-                ];
-              };
+
               diagnostics = {
                 enable = true;
-                experimental.enable = true;
-                disabled = [ ];
+                styleLints.enable = true;
               };
-              imports = {
-                granularity = {
-                  group = "module";
-                };
-                prefix = "self";
+
+              checkOnSave = true;
+              check = {
+                command = "clippy";
+                features = "all";
               };
+
+              files = {
+                excludeDirs = [
+                  ".cargo"
+                  ".direnv"
+                  ".git"
+                  "node_modules"
+                  "target"
+                ];
+              };
+
+              inlayHints = {
+                bindingModeHints.enable = true;
+                closureStyle = "rust_analyzer";
+                closureReturnTypeHints.enable = "always";
+                discriminantHints.enable = "always";
+                expressionAdjustmentHints.enable = "always";
+                implicitDrops.enable = true;
+                lifetimeElisionHints.enable = "always";
+                rangeExclusiveHints.enable = true;
+              };
+
               procMacro = {
                 enable = true;
-                ignored = {
-                  async-trait = [ "async_trait" ];
-                  napi-derive = [ "napi" ];
-                  async-recursion = [ "async_recursion" ];
-                };
               };
+
+              rustc.source = "discover";
             };
           };
         };
