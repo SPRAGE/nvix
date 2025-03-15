@@ -10,6 +10,10 @@
           init_options.diagnosticSeverity = "Hint";
         };
       };
+      servers.rust_analyzer = {
+        installCargo = false;
+        installRustc = false;
+      };
 
       keymaps.lspBuf = {
         "<c-k>" = "signature_help";

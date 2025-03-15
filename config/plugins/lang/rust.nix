@@ -13,6 +13,8 @@
         };
 
         server = {
+          enable = true;
+          autoStart = true;
           default_settings = {
             rust-analyzer = {
               cargo = {
@@ -27,7 +29,7 @@
 
               checkOnSave = true;
               check = {
-                command = "clippy";
+                command = "check";
                 features = "all";
               };
 
