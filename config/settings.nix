@@ -53,18 +53,18 @@
       local o = vim.o
 
       -- Set clipboard to use OSC52 explicitly
-      g.clipboard = {
-        name = 'osc52',
-        copy = {
-          ['+'] = function(str) require('vim.ui.clipboard.osc52').copy(str) end,
-          ['*'] = function(str) require('vim.ui.clipboard.osc52').copy(str) end,
-        },
-        paste = {
-          ['+'] = function() return require('vim.ui.clipboard.osc52').paste() end,
-          ['*'] = function() return require('vim.ui.clipboard.osc52').paste() end,
-        },
-      }
-
+      -- g.clipboard = {
+      --   name = 'osc52',
+      --   copy = {
+      --     ['+'] = function(str) require('vim.ui.clipboard.osc52').copy(str) end,
+      --     ['*'] = function(str) require('vim.ui.clipboard.osc52').copy(str) end,
+      --   },
+      --   paste = {
+      --     ['+'] = function() return require('vim.ui.clipboard.osc52').paste() end,
+      --     ['*'] = function() return require('vim.ui.clipboard.osc52').paste() end,
+      --   },
+      -- }
+      --
       -- Optional: auto-yank to clipboard on TextYankPost
       vim.api.nvim_create_autocmd("TextYankPost", {
         callback = function()
